@@ -55,16 +55,40 @@ const MainLayout = () => {
           content="Cyber Carparks provides cutting-edge solutions for efficient parking management. Integrating advanced hardware and software, our systems streamline operations, enhance revenue, and ensure seamless experiences for operators and users.scription of my page"
         />
       </Helmet>
-      <div className="navbar bg-base-100">
+      {/*NAVBAR*/}
+      <div className="navbar bg-base-100 sticky top-0 z-50">
+        {/* Mobile Menu Button */}
+        <div className="navbar-start lg:hidden">
+          <label htmlFor="menu-toggle" className="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+        </div>
+
+        {/* Logo */}
         <div className="navbar-start">
           <a className="btn btn-ghost text-xl">
             <img
               src={CyberCarparksLogo}
               alt="Cyber Carparks Logo"
-              className="h-12 object-cover hover:scale-105 transition-transform duration-300 ease-in-out" // Increased logo height
+              className="h-12 object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
             />
           </a>
         </div>
+
+        {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li className="font-bold text-indigo-900">
@@ -84,10 +108,11 @@ const MainLayout = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+
+        {/* Sign-in / Sign-up Buttons */}
+        <div className="navbar-end hidden lg:flex">
           <a
-            className="btn btn-primary text-white"
-            style={{ marginRight: "20px" }}
+            className="btn btn-primary text-white mr-2"
             href="https://portal.spacegenie.com.au/register"
           >
             SIGN UP
@@ -99,7 +124,53 @@ const MainLayout = () => {
             SIGN IN
           </a>
         </div>
+
+        {/* Mobile Sidebar (Drawer) */}
+        <input type="checkbox" id="menu-toggle" className="hidden peer" />
+        <div className="fixed inset-0 bg-black bg-opacity-50 hidden peer-checked:block lg:hidden"></div>
+        <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 lg:hidden">
+          <div className="p-4">
+            <label
+              htmlFor="menu-toggle"
+              className="btn btn-ghost btn-circle absolute top-2 right-2"
+            >
+              ✕
+            </label>
+            <ul className="menu p-2">
+              <li className="font-bold text-indigo-900">
+                <a href="#home">Home</a>
+              </li>
+              <li className="font-bold text-indigo-900">
+                <a href="#about">About</a>
+              </li>
+              <li className="font-bold text-indigo-900">
+                <a href="#our-services">Our Services</a>
+              </li>
+              <li className="font-bold text-indigo-900">
+                <a href="#features">Features</a>
+              </li>
+              <li className="font-bold text-indigo-900">
+                <a href="#use-cases">Use Cases</a>
+              </li>
+            </ul>
+            <div className="mt-4 flex flex-col">
+              <a
+                className="btn btn-primary text-white mb-2"
+                href="https://portal.spacegenie.com.au/register"
+              >
+                SIGN UP
+              </a>
+              <a
+                className="btn btn-outline btn-primary"
+                href="https://portal.spacegenie.com.au/signin"
+              >
+                SIGN IN
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+
       {/* HERO Section */}
       <div
         className="hero min-h-[1000px]"
